@@ -1,21 +1,36 @@
-// FilterContainer.js
-import React from 'react';
+import React from 'react'
 
-function FilterContainer({ containerSize, containerType, setContainerSize, setContainerType }) {
+const FilterContainer = ({ containerSizes, containerTypes, carrierNames, onFilterChange }) => {
   return (
-    <div>
-      
-      <select value={containerSize} onChange={(e) => setContainerSize(e.target.value)}>
-        <option value="20FT">20FT</option>
-        <option value="40FT">40FT</option>
+    <div className="filters">
+      <label htmlFor="containerSize">Container Size:</label>
+      <select id="containerSize" onChange={(e) => onFilterChange('containerSize', e.target.value)}>
+        {containerSizes.map((size, index) => (
+          <option key={index} value={size}>
+            {size}
+          </option>
+        ))}
       </select>
 
-      <select value={containerType} onChange={(e) => setContainerType(e.target.value)}>
-        <option value="dry">Dry</option>
-        <option value="reefer">Reefer</option>
+      <label htmlFor="containerType">Container Type:</label>
+      <select id="containerType" onChange={(e) => onFilterChange('containerType', e.target.value)}>
+        {containerTypes.map((type, index) => (
+          <option key={index} value={type}>
+            {type}
+          </option>
+        ))}
+      </select>
+
+      <label htmlFor="carrierName">Carrier Name:</label>
+      <select id="carrierName" onChange={(e) => onFilterChange('carrierName', e.target.value)}>
+        {carrierNames.map((name, index) => (
+          <option key={index} value={name}>
+            {name}
+          </option>
+        ))}
       </select>
     </div>
-  );
+  )
 }
 
-export default FilterContainer;
+export default FilterContainer

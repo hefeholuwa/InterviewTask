@@ -1,18 +1,14 @@
-// RateList.js
-import React from 'react';
-import { Card } from 'semantic-ui-react';
-import RateCard from './RateCard';
+import React from 'react'
+import RateCard from '../components/RateCard'
 
-function RateList({ rates, carrierFilter }) {
-  const filteredRates = carrierFilter ? rates.filter((rate) => rate.carrier_name === carrierFilter) : rates;
-
+const RateList = ({ rates }) => {
   return (
-    <Card.Group itemsPerRow={3}>
-      {filteredRates.map((rate) => (
-        <RateCard key={rate.special_rate_id} rate={rate} />
+    <div className="rates-list">
+      {rates.map((rate, index) => (
+        <RateCard key={index} rate={rate} />
       ))}
-    </Card.Group>
-  );
+    </div>
+  )
 }
 
-export default RateList;
+export default RateList
