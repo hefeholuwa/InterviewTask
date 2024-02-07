@@ -15,13 +15,11 @@ const FilterContainer = ({ containerSizes, containerTypes, onFilterChange, rates
   };
 
   const handleContainerSizeChange = (value) => {
-    // Convert container size to uppercase
     const uppercaseSize = value.toUpperCase();
     onFilterChange('containerSize', uppercaseSize);
   };
 
   const handleContainerTypeChange = (value) => {
-    // Convert container type to lowercase
     const lowercaseType = value.toLowerCase();
     onFilterChange('containerType', lowercaseType);
   };
@@ -29,7 +27,7 @@ const FilterContainer = ({ containerSizes, containerTypes, onFilterChange, rates
   return (
     <div className="filters">
       {/* Container Size Select */}
-      <div>
+      <div className="filter-section">
         <label htmlFor="containerSize">Container Size:</label>
         <select id="containerSize" onChange={(e) => handleContainerSizeChange(e.target.value)}>
           {containerSizes.map((size) => (
@@ -41,7 +39,7 @@ const FilterContainer = ({ containerSizes, containerTypes, onFilterChange, rates
       </div>
 
       {/* Container Type Select */}
-      <div>
+      <div className="filter-section">
         <label htmlFor="containerType">Container Type:</label>
         <select id="containerType" onChange={(e) => handleContainerTypeChange(e.target.value)}>
           {containerTypes.map((type) => (
