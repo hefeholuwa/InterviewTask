@@ -1,7 +1,8 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import RateCard from '../components/RateCard'
 
-const RateList = ({ rates }) => {
+const RatesList = ({ rates }) => {
   return (
     <div className="rates-list">
       {rates.map((rate, index) => (
@@ -11,4 +12,8 @@ const RateList = ({ rates }) => {
   )
 }
 
-export default RateList
+RatesList.propTypes = {
+  rates: PropTypes.array.isRequired
+}
+
+export default RatesList
