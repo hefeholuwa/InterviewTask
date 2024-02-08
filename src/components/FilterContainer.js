@@ -1,4 +1,3 @@
-// src/components/FilterContainer.js
 /* eslint-disable */
 
 import React, { useEffect } from 'react';
@@ -28,7 +27,7 @@ const FilterContainer = ({ containerSizes, containerTypes, onFilterChange, rates
     <div className="filters">
       {/* Container Size Select */}
       <div className="filter-section">
-        <label htmlFor="containerSize">Container Size:</label>
+        <label htmlFor="containerSize"></label>
         <select id="containerSize" onChange={(e) => handleContainerSizeChange(e.target.value)}>
           {containerSizes.map((size) => (
             <option key={size} value={size}>
@@ -40,7 +39,7 @@ const FilterContainer = ({ containerSizes, containerTypes, onFilterChange, rates
 
       {/* Container Type Select */}
       <div className="filter-section">
-        <label htmlFor="containerType">Container Type:</label>
+        <label htmlFor="containerType"></label>
         <select id="containerType" onChange={(e) => handleContainerTypeChange(e.target.value)}>
           {containerTypes.map((type) => (
             <option key={type} value={type}>
@@ -52,7 +51,7 @@ const FilterContainer = ({ containerSizes, containerTypes, onFilterChange, rates
 
       {/* Carrier List */}
       <div className="carrier-list">
-        <h3>Carrier Names</h3>
+        <h3></h3>
         <ul>
           {['All Carriers', ...new Set(rates.map((rate) => rate.carrier_name))].map((name, index) => (
             <li

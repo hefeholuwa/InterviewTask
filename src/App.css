@@ -1,27 +1,22 @@
-/* src/App.css */
-
 .App {
   text-align: center;
-  
-
 }
-
-
-/* Add these styles to your CSS file, e.g., App.css */
+header {
+  margin-top: 20px;
+}
 
 .rate-card {
   border: 1px solid #ddd;
   padding: 10px;
   margin: 10px;
-  width: 300px; /* Adjust the width as needed */
+  width: 300px;
   display: inline-block;
 }
 
-/* Add the following styles to create a grid layout */
 .rate-cards-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjust the minmax and other values as needed */
-  gap: 20px; /* Adjust the gap between cards as needed */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
   justify-content: center;
 }
 
@@ -59,8 +54,6 @@
   flex: content;
 }
 
-
-
 /* FilterContainer.css */
 
 .filters {
@@ -71,20 +64,37 @@
   margin: 16px;
 }
 
-.container-selects {
+.filter-section {
   display: flex;
   flex-direction: column;
-  align-items: flex-end; /* Align container selects to the right */
+  margin-right: 20px; /* Add margin for spacing between sections */
+}
+
+label {
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #333;
 }
 
 select {
-  margin: 8px 0;
-  width: auto; /* Make selects auto width */
-  padding: 8px; /* Add padding for better visual appearance */
-  gap: x-3px;
-  align-items: center;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+  transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
+select:hover {
+  border-color: #3498db;
+}
+
+select:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.7);
+}
 .carrier-list {
   margin-top: 16px;
 }
@@ -97,7 +107,7 @@ select {
   list-style-type: none;
   padding: 0;
   display: flex;
-  flex-wrap: wrap; /* Allow the carrier names to wrap to the next line */
+  flex-wrap: wrap;
   gap: 8px;
 }
 
@@ -119,4 +129,3 @@ select {
 .carrier-list li.selected {
   background-color: #e74c3c;
 }
-

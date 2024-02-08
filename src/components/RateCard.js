@@ -1,6 +1,5 @@
 /* eslint-disable */
 
-// RateCard.js
 import React from 'react';
 
 const RateCard = ({ rate }) => {
