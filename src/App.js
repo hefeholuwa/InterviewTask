@@ -25,7 +25,7 @@ function App() {
       try {
         // Fetch data from the API based on container size and type
         const response = await axios.get(
-          `https://test-api.oneport365.com/api/live_rates/get_special_rates_no_auth?container_size=${containerSize}&container_type=${containerType}`
+          `https://test-api.oneport365.com/api/live_rates/get_special_rates_no_auth?container_size=20FT&container_type=dry`
         );
 
         // Extract unique carrier names and set state variables
