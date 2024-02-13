@@ -1,20 +1,20 @@
-/* eslint-disable */
+/*eslint-disable*/
 
-import React, { useState, useEffect } from 'react';
-import RateCard from './components/RateCard';
-import Pagination from './components/Pagination';
-import axios from 'axios';
-import FilterContainer from './components/FilterContainer'; 
-import './App.css';
+import React, { useState, useEffect } from 'react'
+import RateCard from './components/RateCard'
+import Pagination from './components/Pagination'
+import axios from 'axios'
+import FilterContainer from './components/FilterContainer'
+import './App.css'
 
-function App() {
+function App () {
   // State variables
-  const [rates, setRates] = useState([]);
-  const [filteredRates, setFilteredRates] = useState([]);
-  const [selectedCarrier, setSelectedCarrier] = useState('All Carriers');
-  const [containerSize, setContainerSize] = useState('20FT');
-  const [containerType, setContainerType] = useState('dry');
-  const [currentPage, setCurrentPage] = useState(1);
+  const [rates, setRates] = useState([])
+  const [filteredRates, setFilteredRates] = useState([])
+  const [selectedCarrier, setSelectedCarrier] = useState('All Carriers')
+  const [containerSize, setContainerSize] = useState('20FT')
+  const [containerType, setContainerType] = useState('dry')
+  const [currentPage, setCurrentPage] = useState(1)
   const [ratesPerPage, setRatesPerPage] = useState(9);
   const [totalPages, setTotalPages] = useState(1);
   const [carrierNames, setCarrierNames] = useState([]);
@@ -25,44 +25,44 @@ function App() {
       try {
         // Fetch data from the API based on container size and type
         const response = await axios.get(
-          `https://test-api.oneport365.com/api/live_rates/get_special_rates_no_auth?container_size=20FT&container_type=dry`
-        );
+          'https://test-api.oneport365.com/api/live_rates/get_special_rates_no_auth?container_size=20FT&container_type=dry'
+        )
 
         // Extract unique carrier names and set state variables
-        const uniqueCarrierNames = response.data?.data?.rates?.map((rate) => rate.carrier_name);
-        setCarrierNames(['All Carriers', ...new Set(uniqueCarrierNames)]);
-        setRates(response.data?.data?.rates || []);
-        setFilteredRates(response.data?.data?.rates || []);
-        setTotalPages(Math.ceil(response.data?.total_rates / ratesPerPage) || 1);
+        const uniqueCarrierNames = response.data?.data?.rates?.map((rate) => rate.carrier_name)
+        setCarrierNames(['All Carriers', ...new Set(uniqueCarrierNames)])
+        setRates(response.data?.data?.rates || [])
+        setFilteredRates(response.data?.data?.rates || [])
+        setTotalPages(Math.ceil(response.data?.total_rates / ratesPerPage) || 1)
       } catch (error) {
-        console.error('Error fetching data:', error.message);
+        console.error('Error fetching data:', error.message)
       }
-    };
+    }
 
-    fetchData();
-  }, [ratesPerPage, containerSize, containerType]);
+    fetchData()
+  }, [ratesPerPage, containerSize, containerType])
 
   // Handle filter changes
   const handleFilterChange = (filterType, value) => {
-    let filteredRatesCopy = [...rates];
+    let filteredRatesCopy = [...rates]
 
     if (filterType === 'containerSize') {
-      setContainerSize(value);
+      setContainerSize(value)
     } else if (filterType === 'containerType') {
-      setContainerType(value);
+      setContainerType(value)
     } else if (filterType === 'carrierName') {
-      setSelectedCarrier(value);
+      setSelectedCarrier(value)
       // Filter rates based on the selected carrier
-      filteredRatesCopy = rates.filter((rate) => value === 'All Carriers' || rate.carrier_name === value);
+      filteredRatesCopy = rates.filter((rate) => value === 'All Carriers' || rate.carrier_name === value)
     }
 
-    setFilteredRates(filteredRatesCopy);
-  };
+    setFilteredRates(filteredRatesCopy)
+  }
 
   // Load more rates
   const handleLoadMore = () => {
-    setCurrentPage((prevPage) => prevPage + 1);
-  };
+    setCurrentPage((prevPage) => prevPage + 1)
+  }
 
   // JSX rendering
   return (
@@ -82,8 +82,10 @@ function App() {
         />
 
         {/* Display rates based on filters */}
-        {filteredRates ? (
-          filteredRates.length > 0 ? (
+        {filteredRates
+          ? (
+              filteredRates.length > 0
+                ? (
             <>
               <div className="selected-carrier">Selected Carrier: {selectedCarrier}</div>
               {filteredRates
@@ -95,15 +97,17 @@ function App() {
                 <Pagination onLoadMore={handleLoadMore} />
               )}
             </>
-          ) : (
+                  )
+                : (
             <p>No rates matching the filters.</p>
-          )
-        ) : (
+                  )
+            )
+          : (
           <p>Loading...</p>
-        )}
+            )}
       </main>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

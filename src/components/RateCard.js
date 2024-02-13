@@ -1,14 +1,14 @@
-/* eslint-disable */
+/*eslint-disable*/
 
-import React from 'react';
+import React from 'react'
 
 const RateCard = ({ rate }) => {
   // Log rate data to the console
-  console.log('Rate in RateCard component:', rate);
+  console.log('Rate in RateCard component:', rate)
 
   // Check if rate data is not available
   if (!rate) {
-    return <p>No rate data available</p>;
+    return <p>No rate data available</p>
   }
 
   // Destructure rate object to extract individual properties
@@ -19,8 +19,8 @@ const RateCard = ({ rate }) => {
     sailing_date,
     transit_time,
     detention_days,
-    demurrage_days,
-  } = rate;
+    demurrage_days
+  } = rate
 
   // JSX rendering of RateCard component
   return (
@@ -38,8 +38,8 @@ const RateCard = ({ rate }) => {
       {/* Display total free days (detention days + demurrage days) */}
       <p>Free Days: {detention_days + demurrage_days}</p>
     </div>
-  );
-};
+  )
+}
 
 // Export the RateCard component
-export default RateCard;
+export default RateCard
